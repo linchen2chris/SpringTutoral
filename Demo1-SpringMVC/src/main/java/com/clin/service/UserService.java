@@ -1,8 +1,8 @@
 package com.clin.service;
 
-import com.clin.dao.LoginLog;
+import com.clin.model.LoginLog;
 import com.clin.dao.LoginLogDao;
-import com.clin.dao.User;
+import com.clin.model.User;
 import com.clin.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class UserService {
         this.loginLogDao = loginLogDao;
     }
 
-    public boolean hasMatchedUser(String username, String password) {
+    public boolean hasMatchUser(String username, String password) {
         int matchCount = userDao.getMatchCount(username, password);
         return matchCount > 0;
     }
@@ -40,6 +40,6 @@ public class UserService {
                 .loginDate(user.getLastVisit())
                 .build();
         userDao.updateLoginInfo(user);
-        loginLogDao.insertLOginLog(loginLog);
+        loginLogDao.insertLoginLog(loginLog);
     }
 }

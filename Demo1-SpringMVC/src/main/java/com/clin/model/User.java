@@ -1,4 +1,4 @@
-package com.clin.dao;
+package com.clin.model;
 
 import lombok.*;
 
